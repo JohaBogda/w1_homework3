@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Caps from "./Caps";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+state = {
+  tardis: {
+    name: 'Time and Relative Dimension in Space',
+    caps: false,
+  }
+}
+
+  // FUNCTION GIVEN TO US: 
+  changeIt = (text) =>{
+    if (this.state.tardis.caps) {
+      this.setState({
+        tardis: {
+          name: text.toLowerCase(),
+          caps: false
+        }
+      })
+    } else {
+      this.setState({
+        tardis: {
+          name: text.toUpperCase(),
+          caps: true
+        }
+      })
+    }
+  }
+
+
+
+  render() {
+    return (
+      <div>
+        <h3>{this.state.tardis.name}</h3>
+        <Caps />
+      </div>
+    );
+  }
 }
 
 export default App;
